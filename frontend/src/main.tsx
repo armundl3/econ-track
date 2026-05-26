@@ -127,6 +127,13 @@ const colors = {
   ink: "#17202e",
 };
 
+const vixBuckets = [
+  { max: 15, label: "Calm", action: "Deploy reserve normally", className: "calm" },
+  { max: 22, label: "Normal", action: "Use signals as planned", className: "normal" },
+  { max: 30, label: "Elevated", action: "Be selective with reserve", className: "elevated" },
+  { max: Number.POSITIVE_INFINITY, label: "Stressed", action: "Preserve cash unless conviction is high", className: "stressed" },
+] as const;
+
 function formatPercent(value: number | null): string {
   if (value === null || Number.isNaN(value)) return "n/a";
   return `${(value * 100).toFixed(1)}%`;
@@ -160,6 +167,15 @@ function nextDcaWindow(): string {
   if (day <= 7) return "beginning of month";
   if (day <= 21) return "middle of month";
   return "next beginning";
+}
+
+function getVixBucket(value: number) {
+  return vixBuckets.find((bucket) => value < bucket.max) ?? vixBuckets[vixBuckets.length - 1];
+}
+
+function getVixPosition(value: number): number {
+  const clamped = Math.max(10, Math.min(40, value));
+  return ((clamped - 10) / 30) * 100;
 }
 
 function App() {
@@ -216,6 +232,7 @@ function App() {
   const allocations = data.strategy_allocations[strategy] ?? data.allocations;
   const deployedThisRun = allocations.reduce((sum, allocation) => sum + allocation.total_dollars, 0);
   const reserveUsed = allocations.reduce((sum, allocation) => sum + allocation.reserve_dollars, 0);
+  const vixBucket = getVixBucket(data.volatility.latest_close);
 
   const chartData = allocations.map((allocation) => ({
     symbol: allocation.symbol,
@@ -260,7 +277,7 @@ function App() {
       <section className="summary-grid">
         <SummaryCard icon={<DollarSign />} label="Base per run" value={formatMoney(data.config.base_deployment_per_run)} />
         <SummaryCard icon={<PiggyBank />} label="Reserve used" value={`${formatMoney(reserveUsed)} / ${formatMoney(data.config.reserve_cash_per_run)}`} />
-        <SummaryCard icon={<Gauge />} label="VIX regime" value={`${data.volatility.regime} (${formatNumber(data.volatility.latest_close)})`} />
+        <SummaryCard icon={<Gauge />} label="VIX regime" value={`${vixBucket.label} (${formatNumber(data.volatility.latest_close)})`} />
         <SummaryCard icon={<CalendarClock />} label="Next DCA window" value={nextDcaWindow()} />
       </section>
 
@@ -331,11 +348,10 @@ function App() {
               <dt>
                 VIX context <Info text={tooltipText.vix} />
               </dt>
-              <dd>
-                {formatNumber(data.volatility.latest_close)} vs 20D avg {formatNumber(data.volatility.average_20d)}
-              </dd>
+              <dd>{formatNumber(data.volatility.latest_close)} vs 20D avg {formatNumber(data.volatility.average_20d)}</dd>
             </div>
           </dl>
+          <VixIndicator volatility={data.volatility} />
         </div>
       </section>
 
@@ -412,6 +428,39 @@ function App() {
         <p>{data.disclaimer}</p>
       </footer>
     </main>
+  );
+}
+
+function VixIndicator({ volatility }: { volatility: Volatility }) {
+  const bucket = getVixBucket(volatility.latest_close);
+  const position = getVixPosition(volatility.latest_close);
+
+  return (
+    <section className="vix-indicator" aria-label="VIX volatility indicator">
+      <div className="vix-header">
+        <div>
+          <p>Volatility action bar</p>
+          <strong className={`vix-bucket ${bucket.className}`}>{bucket.label}</strong>
+        </div>
+        <span>{bucket.action}</span>
+      </div>
+      <div className="vix-scale">
+        <div className="vix-marker" style={{ left: `${position}%` }}>
+          <span>{formatNumber(volatility.latest_close)}</span>
+        </div>
+      </div>
+      <div className="vix-labels" aria-hidden="true">
+        <span>10</span>
+        <span>15</span>
+        <span>22</span>
+        <span>30</span>
+        <span>40+</span>
+      </div>
+      <div className="vix-legend">
+        <span>Low volatility: reserve can follow strategy</span>
+        <span>High volatility: throttle reserve and demand stronger signals</span>
+      </div>
+    </section>
   );
 }
 
