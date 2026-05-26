@@ -9,6 +9,9 @@ description = "Static ETF trend and DCA allocation dashboard data engine"
 requires-python = ">=3.11"
 dependencies = []
 
+[dependency-groups]
+dev = []
+
 [tool.setuptools]
 package-dir = {"" = "backend"}
 
