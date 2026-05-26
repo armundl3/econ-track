@@ -1,12 +1,14 @@
 from __future__ import annotations
 
 import argparse
+import logging
 
 from econ_track.build import write_dataset
 
 
 def main() -> None:
     """Parse CLI arguments and run the requested data-generation command."""
+    logging.basicConfig(level=logging.INFO, format="%(levelname)s:%(name)s:%(message)s")
     parser = argparse.ArgumentParser(description="Generate static Econ Track data")
     subparsers = parser.add_subparsers(dest="command", required=True)
 

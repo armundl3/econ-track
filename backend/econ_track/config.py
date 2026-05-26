@@ -1,16 +1,20 @@
 from __future__ import annotations
 
 import json
+import logging
 from pathlib import Path
 
 from econ_track.models import AppConfig, AssetConfig
 
 VALID_STRATEGIES = {"dip_uptrend", "momentum", "mean_reversion"}
+logger = logging.getLogger(__name__)
 
 
 def load_config(path: str | Path) -> AppConfig:
     """Load and validate the application config from a JSON file."""
-    raw = json.loads(Path(path).read_text(encoding="utf-8"))
+    config_path = Path(path)
+    logger.info("Loading config from %s", config_path)
+    raw = json.loads(config_path.read_text(encoding="utf-8"))
     allocation = raw.get("allocation", {})
     market_indicators = raw.get("market_indicators", {})
     assets = tuple(
@@ -35,11 +39,18 @@ def load_config(path: str | Path) -> AppConfig:
         assets=assets,
     )
     validate_config(config)
+    logger.info(
+        "Loaded config with %d assets, default strategy %s, %d DCA runs per month",
+        len(config.assets),
+        config.default_strategy,
+        len(config.runs_per_month),
+    )
     return config
 
 
 def validate_config(config: AppConfig) -> None:
     """Raise ValueError when config values are missing, inconsistent, or unsafe."""
+    logger.info("Validating config for %d assets", len(config.assets))
     if config.contribution_per_asset <= 0:
         raise ValueError("contribution_per_asset must be positive")
     if config.reserve_cash_per_run < 0:
@@ -62,3 +73,4 @@ def validate_config(config: AppConfig) -> None:
         symbols.add(asset.symbol)
         if not 0 <= asset.min_weight <= asset.base_weight <= asset.max_weight <= 1:
             raise ValueError(f"invalid weight bounds for {asset.symbol}")
+    logger.info("Config validation passed")
