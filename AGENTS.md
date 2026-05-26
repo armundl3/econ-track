@@ -17,6 +17,14 @@ Econ Track is a personal finance dashboard for tracking ETF trend signals and ru
 - Prefer standard-library Python unless a dependency clearly pays for itself.
 - Keep finance logic in the Python package so it can later move behind a FastAPI service without rewriting calculations.
 - Treat `frontend/public/data/latest.json` as generated static app data; update it with the generate command.
+- Add concise docstrings for module-level functions and classes when creating or materially changing backend code.
+- Use `logging.getLogger(__name__)` for operational output that should appear in GitHub Actions logs; avoid `print` outside CLI user-facing messages.
+- Prefer immutable dataclasses for internal typed value records. Consider schema libraries such as Marshmallow only at external validation or API serialization boundaries.
+
+## Python Imports
+- Do not mutate `sys.path` inside tests or application modules.
+- Keep imports working through project packaging and the configured `uv run ...` commands.
+- If tests need package import fixes, adjust packaging/test configuration rather than adding per-file import hacks.
 
 ## Testing And Verification
 - Run the narrowest relevant validation after each change.
