@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import time
 from datetime import UTC, date, datetime
+from urllib.parse import quote
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
@@ -20,7 +21,8 @@ class YahooChartProvider:
         self.user_agent = user_agent
 
     def fetch_daily(self, symbol: str, lookback_years: int) -> list[PricePoint]:
-        url = f"{self.base_url.format(symbol=symbol.upper())}?range={lookback_years}y&interval=1d"
+        encoded_symbol = quote(symbol.upper(), safe="")
+        url = f"{self.base_url.format(symbol=encoded_symbol)}?range={lookback_years}y&interval=1d"
         request = Request(url, headers={"User-Agent": self.user_agent, "Accept": "application/json"})
         try:
             with urlopen(request, timeout=20) as response:

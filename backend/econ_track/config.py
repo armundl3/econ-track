@@ -5,10 +5,13 @@ from pathlib import Path
 
 from econ_track.models import AppConfig, AssetConfig
 
+VALID_STRATEGIES = {"dip_uptrend", "momentum", "mean_reversion"}
+
 
 def load_config(path: str | Path) -> AppConfig:
     raw = json.loads(Path(path).read_text(encoding="utf-8"))
     allocation = raw.get("allocation", {})
+    market_indicators = raw.get("market_indicators", {})
     assets = tuple(
         AssetConfig(
             symbol=str(item["symbol"]).upper(),
@@ -20,7 +23,11 @@ def load_config(path: str | Path) -> AppConfig:
         for item in raw["assets"]
     )
     config = AppConfig(
-        monthly_contribution=float(raw["monthly_contribution"]),
+        contribution_per_asset=float(raw["contribution_per_asset"]),
+        runs_per_month=tuple(str(item) for item in raw.get("runs_per_month", ["beginning", "middle"])),
+        reserve_cash_per_run=float(raw.get("reserve_cash_per_run", 0)),
+        default_strategy=str(raw.get("default_strategy", "mean_reversion")),
+        volatility_symbol=str(market_indicators.get("volatility_symbol", "^VIX")),
         lookback_years=int(raw.get("lookback_years", 5)),
         tilt_strength=float(allocation.get("tilt_strength", 0.12)),
         max_monthly_shift=float(allocation.get("max_monthly_shift", 0.15)),
@@ -31,8 +38,14 @@ def load_config(path: str | Path) -> AppConfig:
 
 
 def validate_config(config: AppConfig) -> None:
-    if config.monthly_contribution <= 0:
-        raise ValueError("monthly_contribution must be positive")
+    if config.contribution_per_asset <= 0:
+        raise ValueError("contribution_per_asset must be positive")
+    if config.reserve_cash_per_run < 0:
+        raise ValueError("reserve_cash_per_run cannot be negative")
+    if not config.runs_per_month:
+        raise ValueError("at least one DCA run per month is required")
+    if config.default_strategy not in VALID_STRATEGIES:
+        raise ValueError(f"default_strategy must be one of {sorted(VALID_STRATEGIES)}")
     if not config.assets:
         raise ValueError("at least one asset is required")
 

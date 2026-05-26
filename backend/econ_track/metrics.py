@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from statistics import mean
 
-from econ_track.models import AssetConfig, AssetMetrics, PricePoint
+from econ_track.models import AssetConfig, AssetMetrics, PricePoint, VolatilityMetrics
 
 
 def compute_metrics(asset: AssetConfig, points: list[PricePoint]) -> AssetMetrics:
@@ -11,12 +11,21 @@ def compute_metrics(asset: AssetConfig, points: list[PricePoint]) -> AssetMetric
 
     latest = points[-1]
     closes = [point.close for point in points]
+    sma_5 = _sma(closes, 5)
+    sma_10 = _sma(closes, 10)
+    sma_15 = _sma(closes, 15)
     sma_50 = _sma(closes, 50)
     sma_100 = _sma(closes, 100)
     sma_200 = _sma(closes, 200)
+    distance_5 = _distance(latest.close, sma_5)
+    distance_10 = _distance(latest.close, sma_10)
+    distance_15 = _distance(latest.close, sma_15)
     distance_50 = _distance(latest.close, sma_50)
     distance_100 = _distance(latest.close, sma_100)
     distance_200 = _distance(latest.close, sma_200)
+    sma_5_change = _sma_change(closes, 5)
+    sma_10_change = _sma_change(closes, 10)
+    sma_15_change = _sma_change(closes, 15)
     return_1m = _trailing_return(closes, 21)
     return_3m = _trailing_return(closes, 63)
     return_6m = _trailing_return(closes, 126)
@@ -28,12 +37,21 @@ def compute_metrics(asset: AssetConfig, points: list[PricePoint]) -> AssetMetric
         name=asset.name,
         latest_date=latest.date,
         latest_close=latest.close,
+        sma_5=sma_5,
+        sma_10=sma_10,
+        sma_15=sma_15,
         sma_50=sma_50,
         sma_100=sma_100,
         sma_200=sma_200,
+        distance_sma_5=distance_5,
+        distance_sma_10=distance_10,
+        distance_sma_15=distance_15,
         distance_sma_50=distance_50,
         distance_sma_100=distance_100,
         distance_sma_200=distance_200,
+        sma_5_change=sma_5_change,
+        sma_10_change=sma_10_change,
+        sma_15_change=sma_15_change,
         return_1m=return_1m,
         return_3m=return_3m,
         return_6m=return_6m,
@@ -44,10 +62,35 @@ def compute_metrics(asset: AssetConfig, points: list[PricePoint]) -> AssetMetric
     )
 
 
+def compute_volatility(symbol: str, points: list[PricePoint]) -> VolatilityMetrics:
+    if len(points) < 2:
+        raise ValueError(f"{symbol} needs at least two volatility points")
+
+    latest = points[-1]
+    average_20d = _sma([point.close for point in points], 20)
+    return VolatilityMetrics(
+        symbol=symbol,
+        latest_date=latest.date,
+        latest_close=latest.close,
+        average_20d=average_20d,
+        regime=_volatility_regime(latest.close),
+    )
+
+
 def _sma(values: list[float], window: int) -> float | None:
     if len(values) < window:
         return None
     return mean(values[-window:])
+
+
+def _sma_change(values: list[float], window: int) -> float | None:
+    if len(values) < window * 2:
+        return None
+    current = mean(values[-window:])
+    previous = mean(values[-window * 2 : -window])
+    if previous == 0:
+        return None
+    return (current / previous) - 1
 
 
 def _distance(price: float, average: float | None) -> float | None:
@@ -126,3 +169,13 @@ def _label(score: float) -> str:
     if score <= -0.25:
         return "underweight"
     return "neutral"
+
+
+def _volatility_regime(value: float) -> str:
+    if value < 15:
+        return "calm"
+    if value < 22:
+        return "normal"
+    if value < 30:
+        return "elevated"
+    return "stressed"

@@ -1,9 +1,15 @@
 {
-  "monthly_contribution": 1000,
+  "contribution_per_asset": 1000,
+  "runs_per_month": ["beginning", "middle"],
+  "reserve_cash_per_run": 750,
+  "default_strategy": "mean_reversion",
   "lookback_years": 5,
   "allocation": {
     "tilt_strength": 0.12,
     "max_monthly_shift": 0.15
+  },
+  "market_indicators": {
+    "volatility_symbol": "^VIX"
   },
   "assets": [
     {
