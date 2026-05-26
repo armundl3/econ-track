@@ -1,3 +1,11 @@
+"""Typed domain records for the data pipeline.
+
+Frozen dataclasses fit this project because these objects are internal,
+immutable value records after config parsing. Marshmallow is more useful when
+the app needs external schema validation, request/response loading, or rich
+serialization rules at an API boundary.
+"""
+
 from __future__ import annotations
 
 from dataclasses import dataclass
