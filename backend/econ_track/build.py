@@ -13,6 +13,7 @@ from econ_track.provider import MarketDataError, YahooChartProvider, fetch_all
 
 
 def build_dataset(config_path: str | Path) -> dict[str, Any]:
+    """Build the complete static dashboard dataset from config and market data."""
     config = load_config(config_path)
     symbols = [asset.symbol for asset in config.assets]
     provider = YahooChartProvider()
@@ -50,6 +51,7 @@ def build_dataset(config_path: str | Path) -> dict[str, Any]:
 
 
 def write_dataset(config_path: str | Path, output_path: str | Path, keep_last_good: bool = True) -> dict[str, Any]:
+    """Write the dashboard dataset, optionally preserving stale data on refresh failure."""
     output = Path(output_path)
     try:
         dataset = build_dataset(config_path)
@@ -69,6 +71,7 @@ def write_dataset(config_path: str | Path, output_path: str | Path, keep_last_go
 
 
 def _serialize_metrics(metrics: Any) -> dict[str, Any]:
+    """Convert dataclass metrics into JSON-serializable dictionaries."""
     data = asdict(metrics)
     for key, value in list(data.items()):
         if isinstance(value, date):

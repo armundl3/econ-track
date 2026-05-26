@@ -9,6 +9,7 @@ VALID_STRATEGIES = {"dip_uptrend", "momentum", "mean_reversion"}
 
 
 def load_config(path: str | Path) -> AppConfig:
+    """Load and validate the application config from a JSON file."""
     raw = json.loads(Path(path).read_text(encoding="utf-8"))
     allocation = raw.get("allocation", {})
     market_indicators = raw.get("market_indicators", {})
@@ -38,6 +39,7 @@ def load_config(path: str | Path) -> AppConfig:
 
 
 def validate_config(config: AppConfig) -> None:
+    """Raise ValueError when config values are missing, inconsistent, or unsafe."""
     if config.contribution_per_asset <= 0:
         raise ValueError("contribution_per_asset must be positive")
     if config.reserve_cash_per_run < 0:

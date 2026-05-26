@@ -6,6 +6,7 @@ from econ_track.models import AssetConfig, AssetMetrics, PricePoint, VolatilityM
 
 
 def compute_metrics(asset: AssetConfig, points: list[PricePoint]) -> AssetMetrics:
+    """Compute price trend, momentum, drawdown, and signal metrics for one asset."""
     if len(points) < 2:
         raise ValueError(f"{asset.symbol} needs at least two price points")
 
@@ -63,6 +64,7 @@ def compute_metrics(asset: AssetConfig, points: list[PricePoint]) -> AssetMetric
 
 
 def compute_volatility(symbol: str, points: list[PricePoint]) -> VolatilityMetrics:
+    """Compute the current volatility index regime from recent price points."""
     if len(points) < 2:
         raise ValueError(f"{symbol} needs at least two volatility points")
 
@@ -78,12 +80,14 @@ def compute_volatility(symbol: str, points: list[PricePoint]) -> VolatilityMetri
 
 
 def _sma(values: list[float], window: int) -> float | None:
+    """Return the simple moving average for the trailing window, if available."""
     if len(values) < window:
         return None
     return mean(values[-window:])
 
 
 def _sma_change(values: list[float], window: int) -> float | None:
+    """Return the percentage change between the latest and prior SMA windows."""
     if len(values) < window * 2:
         return None
     current = mean(values[-window:])
@@ -94,12 +98,14 @@ def _sma_change(values: list[float], window: int) -> float | None:
 
 
 def _distance(price: float, average: float | None) -> float | None:
+    """Return price distance from an average as a decimal percentage."""
     if average is None or average == 0:
         return None
     return (price / average) - 1
 
 
 def _trailing_return(values: list[float], sessions: int) -> float | None:
+    """Return the trailing return over the requested trading-session count."""
     if len(values) <= sessions:
         return None
     base = values[-sessions - 1]
@@ -109,6 +115,7 @@ def _trailing_return(values: list[float], sessions: int) -> float | None:
 
 
 def _drawdown(values: list[float], sessions: int) -> float | None:
+    """Return the current drawdown from the high in the trailing window."""
     window = values[-sessions:] if len(values) >= sessions else values
     high = max(window)
     if high == 0:
@@ -122,6 +129,7 @@ def _score_signal(
     return_3m: float | None,
     drawdown_52w: float | None,
 ) -> tuple[float, list[str]]:
+    """Score the broad trend signal and record human-readable reasons."""
     score = 0.0
     reasons: list[str] = []
 
@@ -164,6 +172,7 @@ def _score_signal(
 
 
 def _label(score: float) -> str:
+    """Map a numeric signal score to an allocation label."""
     if score >= 0.35:
         return "overweight"
     if score <= -0.25:
@@ -172,6 +181,7 @@ def _label(score: float) -> str:
 
 
 def _volatility_regime(value: float) -> str:
+    """Classify a volatility index value into a coarse market regime."""
     if value < 15:
         return "calm"
     if value < 22:

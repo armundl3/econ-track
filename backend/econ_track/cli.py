@@ -6,6 +6,7 @@ from econ_track.build import write_dataset
 
 
 def main() -> None:
+    """Parse CLI arguments and run the requested data-generation command."""
     parser = argparse.ArgumentParser(description="Generate static Econ Track data")
     subparsers = parser.add_subparsers(dest="command", required=True)
 

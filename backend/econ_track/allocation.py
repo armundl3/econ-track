@@ -7,6 +7,7 @@ STRATEGIES = ("dip_uptrend", "momentum", "mean_reversion")
 
 
 def allocate(config: AppConfig, metrics: list[AssetMetrics], volatility: VolatilityMetrics, strategy: str) -> list[Allocation]:
+    """Allocate a single DCA run across assets for the selected strategy."""
     if strategy not in STRATEGIES:
         raise ValueError(f"unknown strategy: {strategy}")
 
@@ -42,10 +43,12 @@ def allocate(config: AppConfig, metrics: list[AssetMetrics], volatility: Volatil
 def allocate_all_strategies(
     config: AppConfig, metrics: list[AssetMetrics], volatility: VolatilityMetrics
 ) -> dict[str, list[Allocation]]:
+    """Build allocation recommendations for every supported strategy."""
     return {strategy: allocate(config, metrics, volatility, strategy) for strategy in STRATEGIES}
 
 
 def _strategy_score(metrics: AssetMetrics, strategy: str) -> float:
+    """Score one asset's opportunity under a strategy using short-term trend inputs."""
     distances = [metrics.distance_sma_5, metrics.distance_sma_10, metrics.distance_sma_15]
     changes = [metrics.sma_5_change, metrics.sma_10_change, metrics.sma_15_change]
     usable_distances = [value for value in distances if value is not None]
@@ -76,6 +79,7 @@ def _strategy_score(metrics: AssetMetrics, strategy: str) -> float:
 
 
 def _volatility_throttle(regime: str, strategy: str) -> float:
+    """Return the reserve-cash deployment fraction allowed by volatility regime."""
     if regime == "calm":
         return 1.0
     if regime == "normal":

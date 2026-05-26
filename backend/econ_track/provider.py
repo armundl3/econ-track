@@ -11,6 +11,7 @@ from econ_track.models import PricePoint
 
 
 class MarketDataError(RuntimeError):
+    """Raised when market data cannot be fetched or parsed safely."""
     pass
 
 
@@ -18,9 +19,11 @@ class YahooChartProvider:
     base_url = "https://query2.finance.yahoo.com/v8/finance/chart/{symbol}"
 
     def __init__(self, user_agent: str = "Mozilla/5.0 econ-track/0.1") -> None:
+        """Create a Yahoo chart provider with a configurable User-Agent."""
         self.user_agent = user_agent
 
     def fetch_daily(self, symbol: str, lookback_years: int) -> list[PricePoint]:
+        """Fetch daily closing prices for a symbol over the configured lookback."""
         encoded_symbol = quote(symbol.upper(), safe="")
         url = f"{self.base_url.format(symbol=encoded_symbol)}?range={lookback_years}y&interval=1d"
         request = Request(url, headers={"User-Agent": self.user_agent, "Accept": "application/json"})
@@ -33,6 +36,7 @@ class YahooChartProvider:
 
 
 def parse_yahoo_chart(symbol: str, payload: dict) -> list[PricePoint]:
+    """Parse Yahoo chart JSON into sorted daily closing price points."""
     error = payload.get("chart", {}).get("error")
     if error:
         raise MarketDataError(f"{symbol} returned provider error: {error}")
@@ -59,6 +63,7 @@ def parse_yahoo_chart(symbol: str, payload: dict) -> list[PricePoint]:
 
 
 def fetch_all(provider: YahooChartProvider, symbols: list[str], lookback_years: int) -> dict[str, list[PricePoint]]:
+    """Fetch daily prices for each symbol with a small delay between requests."""
     prices: dict[str, list[PricePoint]] = {}
     for index, symbol in enumerate(symbols):
         if index:
