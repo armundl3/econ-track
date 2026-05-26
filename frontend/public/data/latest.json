@@ -1,0 +1,132 @@
+{
+  "allocations": [
+    {
+      "base_weight": 0.34,
+      "dollars": 328.0,
+      "final_weight": 0.328,
+      "name": "Vanguard Information Technology ETF",
+      "symbol": "VGT",
+      "tilt": -0.01200000000000001
+    },
+    {
+      "base_weight": 0.33,
+      "dollars": 336.0,
+      "final_weight": 0.336,
+      "name": "Vanguard Total Stock Market ETF",
+      "symbol": "VTI",
+      "tilt": 0.006000000000000005
+    },
+    {
+      "base_weight": 0.33,
+      "dollars": 336.0,
+      "final_weight": 0.336,
+      "name": "Vanguard S&P 500 ETF",
+      "symbol": "VOO",
+      "tilt": 0.006000000000000005
+    }
+  ],
+  "config": {
+    "assets": [
+      {
+        "base_weight": 0.34,
+        "max_weight": 0.6,
+        "min_weight": 0.15,
+        "name": "Vanguard Information Technology ETF",
+        "symbol": "VGT"
+      },
+      {
+        "base_weight": 0.33,
+        "max_weight": 0.6,
+        "min_weight": 0.15,
+        "name": "Vanguard Total Stock Market ETF",
+        "symbol": "VTI"
+      },
+      {
+        "base_weight": 0.33,
+        "max_weight": 0.6,
+        "min_weight": 0.15,
+        "name": "Vanguard S&P 500 ETF",
+        "symbol": "VOO"
+      }
+    ],
+    "max_monthly_shift": 0.15,
+    "monthly_contribution": 1000.0,
+    "tilt_strength": 0.12
+  },
+  "disclaimer": "For personal education and research only. Not financial advice.",
+  "generated_at": "2026-05-26T04:22:47.017453+00:00",
+  "latest_market_date": "2026-05-22",
+  "metrics": [
+    {
+      "distance_sma_100": 0.2010654997077601,
+      "distance_sma_200": 0.2242496086423329,
+      "distance_sma_50": 0.16179166045009663,
+      "drawdown_52w": 0.0,
+      "latest_close": 115.75,
+      "latest_date": "2026-05-22",
+      "name": "Vanguard Information Technology ETF",
+      "reasons": [
+        "above 200-day trend",
+        "extended above 50-day average",
+        "positive 3-month momentum"
+      ],
+      "return_1m": 0.1396081554374402,
+      "return_3m": 0.2739905497740729,
+      "return_6m": 0.2554740442325929,
+      "signal_label": "overweight",
+      "signal_score": 0.55,
+      "sma_100": 96.37276237487794,
+      "sma_200": 94.54771247863769,
+      "sma_50": 99.63059982299805,
+      "symbol": "VGT"
+    },
+    {
+      "distance_sma_100": 0.0751916256634464,
+      "distance_sma_200": 0.09630995540088882,
+      "distance_sma_50": 0.06810120068688064,
+      "drawdown_52w": -0.001660275889210694,
+      "latest_close": 366.7900085449219,
+      "latest_date": "2026-05-22",
+      "name": "Vanguard Total Stock Market ETF",
+      "reasons": [
+        "above 200-day trend",
+        "positive 3-month momentum"
+      ],
+      "return_1m": 0.048570672798332826,
+      "return_3m": 0.09014449818736692,
+      "return_6m": 0.12761316380165644,
+      "signal_label": "overweight",
+      "signal_score": 0.7,
+      "sma_100": 341.1391976928711,
+      "sma_200": 334.56779876708987,
+      "sma_50": 343.4037976074219,
+      "symbol": "VTI"
+    },
+    {
+      "distance_sma_100": 0.07760973281408745,
+      "distance_sma_200": 0.09815638941025395,
+      "distance_sma_50": 0.07008338497360955,
+      "drawdown_52w": -0.0031698380726333797,
+      "latest_close": 685.5499877929688,
+      "latest_date": "2026-05-22",
+      "name": "Vanguard S&P 500 ETF",
+      "reasons": [
+        "above 200-day trend",
+        "positive 3-month momentum"
+      ],
+      "return_1m": 0.052651748169957546,
+      "return_3m": 0.09228364236819875,
+      "return_6m": 0.12532825682214632,
+      "signal_label": "overweight",
+      "signal_score": 0.7,
+      "sma_100": 636.176499633789,
+      "sma_200": 624.2735501098633,
+      "sma_50": 640.6509973144531,
+      "symbol": "VOO"
+    }
+  ],
+  "status": {
+    "ok": true,
+    "warnings": []
+  }
+}
