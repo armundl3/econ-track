@@ -1,7 +1,7 @@
 # AGENTS.md
 
 ## Project
-Econ Track is a personal finance dashboard for tracking ETF trend signals and rule-based monthly DCA allocations.
+Econ Track is a personal finance dashboard for tracking ETF trend signals and rule-based bimonthly DCA allocations.
 
 ## Commands
 - Python tests: `uv run python -m unittest discover -s tests`
@@ -16,6 +16,7 @@ Econ Track is a personal finance dashboard for tracking ETF trend signals and ru
 - Manage Python with `uv`; do not add pip/requirements workflows.
 - Prefer standard-library Python unless a dependency clearly pays for itself.
 - Keep finance logic in the Python package so it can later move behind a FastAPI service without rewriting calculations.
+- Treat `frontend/public/data/latest.json` as generated static app data; update it with the generate command.
 
 ## Testing And Verification
 - Run the narrowest relevant validation after each change.

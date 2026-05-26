@@ -1,8 +1,10 @@
 # Econ Track
 
-A static GitHub Pages dashboard for tracking ETF trend signals and monthly DCA allocation suggestions.
+A static GitHub Pages dashboard for tracking ETF trend signals and bimonthly DCA allocation suggestions.
 
-The free v1 architecture uses GitHub Actions as the scheduled data engine and GitHub Pages as the static host. Python fetches public market data, computes metrics and allocations, writes static JSON, and a React + Vite frontend renders the dashboard.
+The free architecture uses GitHub Actions as the scheduled data engine and GitHub Pages as the static host. Python fetches public market data, computes moving-average and VIX-aware allocation data, writes static JSON, and a React + Vite frontend renders the dashboard.
+
+The default strategy contributes `$1000` to each configured fund at the beginning and middle of each month. Strategy tilts can recommend extra reserve cash without reducing the scheduled base contribution.
 
 ## Local Commands
 
