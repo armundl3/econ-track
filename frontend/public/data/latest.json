@@ -68,7 +68,7 @@
     "tilt_strength": 0.12
   },
   "disclaimer": "For personal education and research only. Not financial advice.",
-  "generated_at": "2026-07-02T23:34:38.224118+00:00",
+  "generated_at": "2026-07-03T23:32:43.405848+00:00",
   "latest_market_date": "2026-07-02",
   "metrics": [
     {
@@ -269,9 +269,9 @@
     ]
   },
   "volatility": {
-    "average_20d": 18.101500034332275,
-    "latest_close": 16.149999618530273,
-    "latest_date": "2026-07-02",
+    "average_20d": 18.122000074386598,
+    "latest_close": 15.8100004196167,
+    "latest_date": "2026-07-03",
     "regime": "normal",
     "symbol": "^VIX"
   }
