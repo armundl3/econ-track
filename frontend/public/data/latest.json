@@ -2,33 +2,33 @@
   "allocations": [
     {
       "base_dollars": 1000.0,
-      "final_weight": 0.3076933333333333,
+      "final_weight": 0.31808,
       "name": "Vanguard Information Technology ETF",
-      "opportunity_score": 0.0208,
-      "reserve_dollars": 153.85,
+      "opportunity_score": 0.0282,
+      "reserve_dollars": 192.8,
       "strategy": "mean_reversion",
       "symbol": "VGT",
-      "total_dollars": 1153.85
+      "total_dollars": 1192.8
     },
     {
       "base_dollars": 1000.0,
-      "final_weight": 0.35581866666666667,
+      "final_weight": 0.3507146666666667,
       "name": "Vanguard Total Stock Market ETF",
-      "opportunity_score": 0.0452,
-      "reserve_dollars": 334.32,
+      "opportunity_score": 0.0461,
+      "reserve_dollars": 315.18,
       "strategy": "mean_reversion",
       "symbol": "VTI",
-      "total_dollars": 1334.32
+      "total_dollars": 1315.18
     },
     {
       "base_dollars": 1000.0,
-      "final_weight": 0.33648799999999995,
+      "final_weight": 0.33120533333333335,
       "name": "Vanguard S&P 500 ETF",
       "opportunity_score": 0.0354,
-      "reserve_dollars": 261.83,
+      "reserve_dollars": 242.02,
       "strategy": "mean_reversion",
       "symbol": "VOO",
-      "total_dollars": 1261.83
+      "total_dollars": 1242.02
     }
   ],
   "config": {
@@ -68,46 +68,47 @@
     "tilt_strength": 0.12
   },
   "disclaimer": "For personal education and research only. Not financial advice.",
-  "generated_at": "2026-09-02T00:22:33.857545+00:00",
+  "generated_at": "2026-09-03T00:26:32.346791+00:00",
   "latest_market_date": "2026-09-01",
   "metrics": [
     {
-      "distance_sma_10": 0.00011780833716512618,
-      "distance_sma_100": 0.04499907126345715,
-      "distance_sma_15": -0.00854636680300691,
-      "distance_sma_200": 0.15159478033395768,
-      "distance_sma_5": -0.004055147749091437,
-      "distance_sma_50": 0.015524640196747264,
+      "distance_sma_10": -0.00011774208556047938,
+      "distance_sma_100": 0.04247413642071307,
+      "distance_sma_15": -0.00849123543011543,
+      "distance_sma_200": 0.15029658541371504,
+      "distance_sma_5": -0.008309258810554887,
+      "distance_sma_50": 0.01560099324699249,
       "drawdown_52w": -0.05486200270853525,
       "latest_close": 118.87000274658203,
       "latest_date": "2026-09-01",
       "name": "Vanguard Information Technology ETF",
       "reasons": [
-        "above 200-day trend"
+        "above 200-day trend",
+        "negative 3-month momentum"
       ],
-      "return_1m": 0.050552374225066865,
-      "return_3m": -0.04283758426797868,
-      "return_6m": 0.29578002560534067,
-      "signal_label": "overweight",
-      "signal_score": 0.45,
-      "sma_10": 118.85600051879882,
-      "sma_100": 113.75129989624024,
-      "sma_10_change": -0.018554442190633402,
-      "sma_15": 119.89466654459635,
-      "sma_15_change": 0.037240817739786936,
-      "sma_200": 103.22207496643067,
-      "sma_5": 119.35400085449218,
-      "sma_50": 117.05280014038085,
-      "sma_5_change": 0.008415152924566627,
+      "return_1m": 0.032395374124597476,
+      "return_3m": -0.05486200270853525,
+      "return_6m": 0.31406150729207694,
+      "signal_label": "neutral",
+      "signal_score": 0.2,
+      "sma_10": 118.88400039672851,
+      "sma_100": 114.0268123626709,
+      "sma_10_change": -0.018031327069184866,
+      "sma_15": 119.88799997965495,
+      "sma_15_change": 0.034700604417963854,
+      "sma_200": 103.33856872558594,
+      "sma_5": 119.86600036621094,
+      "sma_50": 117.04400009155273,
+      "sma_5_change": 0.016657901747619386,
       "symbol": "VGT"
     },
     {
-      "distance_sma_10": -0.007814840521694233,
-      "distance_sma_100": 0.02474614058417246,
-      "distance_sma_15": -0.011671875896643202,
-      "distance_sma_200": 0.07097859892382452,
-      "distance_sma_5": -0.007660011648899179,
-      "distance_sma_50": 0.006729994753536861,
+      "distance_sma_10": -0.007898794075607896,
+      "distance_sma_100": 0.023518568312943078,
+      "distance_sma_15": -0.01144791411179491,
+      "distance_sma_200": 0.07031405580738581,
+      "distance_sma_5": -0.008294797538181298,
+      "distance_sma_50": 0.006160310750729314,
       "drawdown_52w": -0.02375741518407981,
       "latest_close": 375.1700134277344,
       "latest_date": "2026-09-01",
@@ -115,20 +116,20 @@
       "reasons": [
         "above 200-day trend"
       ],
-      "return_1m": 0.018902316977200684,
-      "return_3m": 0.004740277343819876,
-      "return_6m": 0.10630460848552836,
+      "return_1m": 0.003557717480399347,
+      "return_3m": 0.002163767784666426,
+      "return_6m": 0.11747535564526101,
       "signal_label": "overweight",
       "signal_score": 0.45,
-      "sma_10": 378.125,
-      "sma_100": 366.1101989746094,
-      "sma_10_change": -0.009031082428236914,
-      "sma_15": 379.6006652832031,
-      "sma_15_change": 0.022140962705792244,
-      "sma_200": 350.30579864501954,
-      "sma_5": 378.0660034179688,
-      "sma_50": 372.6620001220703,
-      "sma_5_change": -0.00031199935779635535,
+      "sma_10": 378.15699768066406,
+      "sma_100": 366.5492987060547,
+      "sma_10_change": -0.008484690576723852,
+      "sma_15": 379.51466471354166,
+      "sma_15_change": 0.0198589373823701,
+      "sma_200": 350.5232986450195,
+      "sma_5": 378.30800170898436,
+      "sma_50": 372.8729998779297,
+      "sma_5_change": 0.0007989504444692042,
       "symbol": "VTI"
     },
     {
@@ -170,104 +171,104 @@
     "dip_uptrend": [
       {
         "base_dollars": 1000.0,
-        "final_weight": 0.30768266666666666,
+        "final_weight": 0.31806133333333336,
         "name": "Vanguard Information Technology ETF",
-        "opportunity_score": 0.0347,
-        "reserve_dollars": 153.81,
+        "opportunity_score": 0.047,
+        "reserve_dollars": 192.73,
         "strategy": "dip_uptrend",
         "symbol": "VGT",
-        "total_dollars": 1153.81
+        "total_dollars": 1192.73
       },
       {
         "base_dollars": 1000.0,
-        "final_weight": 0.355792,
+        "final_weight": 0.350648,
         "name": "Vanguard Total Stock Market ETF",
-        "opportunity_score": 0.0754,
-        "reserve_dollars": 334.22,
+        "opportunity_score": 0.0768,
+        "reserve_dollars": 314.93,
         "strategy": "dip_uptrend",
         "symbol": "VTI",
-        "total_dollars": 1334.22
+        "total_dollars": 1314.93
       },
       {
         "base_dollars": 1000.0,
-        "final_weight": 0.33652533333333334,
+        "final_weight": 0.33129333333333333,
         "name": "Vanguard S&P 500 ETF",
         "opportunity_score": 0.0591,
-        "reserve_dollars": 261.97,
+        "reserve_dollars": 242.35,
         "strategy": "dip_uptrend",
         "symbol": "VOO",
-        "total_dollars": 1261.97
+        "total_dollars": 1242.35
       }
     ],
     "mean_reversion": [
       {
         "base_dollars": 1000.0,
-        "final_weight": 0.3076933333333333,
+        "final_weight": 0.31808,
         "name": "Vanguard Information Technology ETF",
-        "opportunity_score": 0.0208,
-        "reserve_dollars": 153.85,
+        "opportunity_score": 0.0282,
+        "reserve_dollars": 192.8,
         "strategy": "mean_reversion",
         "symbol": "VGT",
-        "total_dollars": 1153.85
+        "total_dollars": 1192.8
       },
       {
         "base_dollars": 1000.0,
-        "final_weight": 0.35581866666666667,
+        "final_weight": 0.3507146666666667,
         "name": "Vanguard Total Stock Market ETF",
-        "opportunity_score": 0.0452,
-        "reserve_dollars": 334.32,
+        "opportunity_score": 0.0461,
+        "reserve_dollars": 315.18,
         "strategy": "mean_reversion",
         "symbol": "VTI",
-        "total_dollars": 1334.32
+        "total_dollars": 1315.18
       },
       {
         "base_dollars": 1000.0,
-        "final_weight": 0.33648799999999995,
+        "final_weight": 0.33120533333333335,
         "name": "Vanguard S&P 500 ETF",
         "opportunity_score": 0.0354,
-        "reserve_dollars": 261.83,
+        "reserve_dollars": 242.02,
         "strategy": "mean_reversion",
         "symbol": "VOO",
-        "total_dollars": 1261.83
+        "total_dollars": 1242.02
       }
     ],
     "momentum": [
       {
         "base_dollars": 1000.0,
-        "final_weight": 0.367152,
+        "final_weight": 0.37855999999999995,
         "name": "Vanguard Information Technology ETF",
-        "opportunity_score": 0.0723,
-        "reserve_dollars": 376.82,
+        "opportunity_score": 0.0889,
+        "reserve_dollars": 419.6,
         "strategy": "momentum",
         "symbol": "VGT",
-        "total_dollars": 1376.82
+        "total_dollars": 1419.6
       },
       {
         "base_dollars": 1000.0,
-        "final_weight": 0.31406133333333336,
+        "final_weight": 0.30757333333333337,
         "name": "Vanguard Total Stock Market ETF",
-        "opportunity_score": 0.0341,
-        "reserve_dollars": 177.73,
+        "opportunity_score": 0.0325,
+        "reserve_dollars": 153.4,
         "strategy": "momentum",
         "symbol": "VTI",
-        "total_dollars": 1177.73
+        "total_dollars": 1153.4
       },
       {
         "base_dollars": 1000.0,
-        "final_weight": 0.31878666666666666,
+        "final_weight": 0.3138666666666667,
         "name": "Vanguard S&P 500 ETF",
         "opportunity_score": 0.0375,
-        "reserve_dollars": 195.45,
+        "reserve_dollars": 177.0,
         "strategy": "momentum",
         "symbol": "VOO",
-        "total_dollars": 1195.45
+        "total_dollars": 1177.0
       }
     ]
   },
   "volatility": {
-    "average_20d": 15.29350004196167,
-    "latest_close": 16.34000015258789,
-    "latest_date": "2026-09-01",
+    "average_20d": 15.159500026702881,
+    "latest_close": 15.199999809265137,
+    "latest_date": "2026-09-02",
     "regime": "normal",
     "symbol": "^VIX"
   }
