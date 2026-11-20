@@ -2,33 +2,33 @@
   "allocations": [
     {
       "base_dollars": 1000.0,
-      "final_weight": 0.3389498281786942,
+      "final_weight": 0.327013058419244,
       "name": "Vanguard Information Technology ETF",
-      "opportunity_score": 0.22,
-      "reserve_dollars": 232.93,
+      "opportunity_score": 0.247,
+      "reserve_dollars": 189.51,
       "strategy": "mean_reversion",
       "symbol": "VGT",
-      "total_dollars": 1232.93
+      "total_dollars": 1189.51
     },
     {
       "base_dollars": 1000.0,
-      "final_weight": 0.3292865979381443,
+      "final_weight": 0.33561786941580757,
       "name": "Vanguard Total Stock Market ETF",
-      "opportunity_score": 0.1868,
-      "reserve_dollars": 197.78,
+      "opportunity_score": 0.2878,
+      "reserve_dollars": 220.81,
       "strategy": "mean_reversion",
       "symbol": "VTI",
-      "total_dollars": 1197.78
+      "total_dollars": 1220.81
     },
     {
       "base_dollars": 1000.0,
-      "final_weight": 0.33176082474226803,
+      "final_weight": 0.3373690721649485,
       "name": "Vanguard S&P 500 ETF",
-      "opportunity_score": 0.1953,
-      "reserve_dollars": 206.78,
+      "opportunity_score": 0.2961,
+      "reserve_dollars": 227.18,
       "strategy": "mean_reversion",
       "symbol": "VOO",
-      "total_dollars": 1206.78
+      "total_dollars": 1227.18
     }
   ],
   "config": {
@@ -68,98 +68,101 @@
     "tilt_strength": 0.12
   },
   "disclaimer": "For personal education and research only. Not financial advice.",
-  "generated_at": "2026-11-19T03:43:52.584121+00:00",
-  "latest_market_date": "2026-11-18",
+  "generated_at": "2026-11-20T03:37:07.399076+00:00",
+  "latest_market_date": "2026-11-19",
   "metrics": [
     {
-      "distance_sma_10": -0.024979052908230548,
-      "distance_sma_100": -0.09981060188409618,
-      "distance_sma_15": -0.0452729057045842,
-      "distance_sma_200": -0.031060691404634855,
-      "distance_sma_5": -0.01974611932651027,
-      "distance_sma_50": -0.1097644030657624,
-      "drawdown_52w": -0.1754237576048545,
-      "latest_close": 107.02999877929688,
-      "latest_date": "2026-11-18",
+      "distance_sma_10": -0.04175604938953836,
+      "distance_sma_100": -0.11588784704000887,
+      "distance_sma_15": -0.05376339220999182,
+      "distance_sma_200": -0.05016383518043688,
+      "distance_sma_5": -0.02394809702261247,
+      "distance_sma_50": -0.1246004204971729,
+      "drawdown_52w": -0.19114025119163736,
+      "latest_close": 104.98999786376953,
+      "latest_date": "2026-11-19",
       "name": "Vanguard Information Technology ETF",
+      "reasons": [
+        "below 200-day trend",
+        "negative 3-month momentum"
+      ],
+      "return_1m": -0.14118611154380756,
+      "return_3m": -0.1134099013075115,
+      "return_6m": -0.08297668073418918,
+      "signal_label": "underweight",
+      "signal_score": -0.5,
+      "sma_10": 109.56499938964843,
+      "sma_100": 118.75189987182617,
+      "sma_10_change": -0.06945635773507597,
+      "sma_15": 110.95533294677735,
+      "sma_15_change": -0.0930674840718636,
+      "sma_200": 110.53484985351562,
+      "sma_5": 107.56599884033203,
+      "sma_50": 119.93379974365234,
+      "sma_5_change": -0.0358359426053213,
+      "symbol": "VGT"
+    },
+    {
+      "distance_sma_10": -0.03627272503839063,
+      "distance_sma_100": -0.05861327274391248,
+      "distance_sma_15": -0.04009651560427696,
+      "distance_sma_200": -0.0242482790916132,
+      "distance_sma_5": -0.025139819401122088,
+      "distance_sma_50": -0.058649483236820954,
+      "drawdown_52w": -0.0829820066193685,
+      "latest_close": 352.4100036621094,
+      "latest_date": "2026-11-19",
+      "name": "Vanguard Total Stock Market ETF",
+      "reasons": [
+        "near-term pullback",
+        "negative 3-month momentum",
+        "moderate 52-week discount"
+      ],
+      "return_1m": -0.07052615235350779,
+      "return_3m": -0.06828994088187279,
+      "return_6m": -0.03473114246616038,
+      "signal_label": "neutral",
+      "signal_score": 0.15,
+      "sma_10": 365.6739959716797,
+      "sma_100": 374.35199951171876,
+      "sma_10_change": -0.020730303868659483,
+      "sma_15": 367.1306640625,
+      "sma_15_change": -0.02786502919312983,
+      "sma_200": 361.16769882202146,
+      "sma_5": 361.497998046875,
+      "sma_50": 374.3663995361328,
+      "sma_5_change": -0.022582117040529037,
+      "symbol": "VTI"
+    },
+    {
+      "distance_sma_10": -0.03628660930758032,
+      "distance_sma_100": -0.05819196284227468,
+      "distance_sma_15": -0.040454841114699436,
+      "distance_sma_200": -0.023307188427569625,
+      "distance_sma_5": -0.025502413981404848,
+      "distance_sma_50": -0.06046432710922589,
+      "drawdown_52w": -0.08124825670148872,
+      "latest_close": 658.010009765625,
+      "latest_date": "2026-11-19",
+      "name": "Vanguard S&P 500 ETF",
       "reasons": [
         "negative 3-month momentum",
         "moderate 52-week discount"
       ],
-      "return_1m": -0.10956737523559401,
-      "return_3m": -0.095724922039784,
-      "return_6m": -0.05973823194565442,
+      "return_1m": -0.07416417592058555,
+      "return_3m": -0.06494153952635762,
+      "return_6m": -0.03636286115825382,
       "signal_label": "neutral",
       "signal_score": -0.1,
-      "sma_10": 109.77199935913086,
-      "sma_100": 118.89719985961914,
-      "sma_10_change": -0.07674710084514202,
-      "sma_15": 112.10533294677734,
-      "sma_15_change": -0.08616239248771018,
-      "sma_200": 110.46099361419678,
-      "sma_5": 109.18599853515624,
-      "sma_50": 120.22659973144532,
-      "sma_5_change": -0.01061999715475681,
-      "symbol": "VGT"
-    },
-    {
-      "distance_sma_10": -0.019113970900593524,
-      "distance_sma_100": -0.040179309792813256,
-      "distance_sma_15": -0.02541028740448048,
-      "distance_sma_200": -0.004477711724302891,
-      "distance_sma_5": -0.016578173147326125,
-      "distance_sma_50": -0.04083159671371428,
-      "drawdown_52w": -0.06458490136619965,
-      "latest_close": 359.4800109863281,
-      "latest_date": "2026-11-18",
-      "name": "Vanguard Total Stock Market ETF",
-      "reasons": [
-        "near-term pullback"
-      ],
-      "return_1m": -0.04669968846318351,
-      "return_3m": -0.04540861489105186,
-      "return_6m": -0.01293278624757388,
-      "signal_label": "neutral",
-      "signal_score": 0.25,
-      "sma_10": 366.48499450683596,
-      "sma_100": 374.5282995605469,
-      "sma_10_change": -0.02232343974158091,
-      "sma_15": 368.8526631673177,
-      "sma_15_change": -0.023532837555256703,
-      "sma_200": 361.0968988037109,
-      "sma_5": 365.5399963378906,
-      "sma_50": 374.78299926757813,
-      "sma_5_change": -0.005143827057031647,
-      "symbol": "VTI"
-    },
-    {
-      "distance_sma_10": -0.01910043977325926,
-      "distance_sma_100": -0.039551634238241706,
-      "distance_sma_15": -0.025730510142223828,
-      "distance_sma_200": -0.003365395828587525,
-      "distance_sma_5": -0.016868091703438504,
-      "distance_sma_50": -0.042530527245291605,
-      "drawdown_52w": -0.06267804228333518,
-      "latest_close": 671.3099975585938,
-      "latest_date": "2026-11-18",
-      "name": "Vanguard S&P 500 ETF",
-      "reasons": [
-        "near-term pullback"
-      ],
-      "return_1m": -0.050212211159192166,
-      "return_3m": -0.0423674580865987,
-      "return_6m": -0.015053493632891546,
-      "signal_label": "neutral",
-      "signal_score": 0.25,
-      "sma_10": 684.3819946289062,
-      "sma_100": 698.9548022460938,
-      "sma_10_change": -0.02419057218539733,
-      "sma_15": 689.0393310546875,
-      "sma_15_change": -0.026734783575468435,
-      "sma_200": 673.5768502807617,
-      "sma_5": 682.8280029296875,
-      "sma_50": 701.1294006347656,
-      "sma_5_change": -0.004531010852885542,
+      "sma_10": 682.7859985351563,
+      "sma_100": 698.6668023681641,
+      "sma_10_change": -0.022517775353821934,
+      "sma_15": 685.7519978841145,
+      "sma_15_change": -0.031016793347031557,
+      "sma_200": 673.7123504638672,
+      "sma_5": 675.2300048828125,
+      "sma_50": 700.3566003417968,
+      "sma_5_change": -0.021890581010147958,
       "symbol": "VOO"
     }
   ],
@@ -171,65 +174,65 @@
     "dip_uptrend": [
       {
         "base_dollars": 1000.0,
-        "final_weight": 0.34667517730496455,
+        "final_weight": 0.3387205673758865,
         "name": "Vanguard Information Technology ETF",
-        "opportunity_score": 0.0875,
-        "reserve_dollars": 222.03,
+        "opportunity_score": 0.1161,
+        "reserve_dollars": 193.99,
         "strategy": "dip_uptrend",
         "symbol": "VGT",
-        "total_dollars": 1222.03
+        "total_dollars": 1193.99
       },
       {
         "base_dollars": 1000.0,
-        "final_weight": 0.326445390070922,
+        "final_weight": 0.33047375886524827,
         "name": "Vanguard Total Stock Market ETF",
-        "opportunity_score": 0.0594,
-        "reserve_dollars": 150.72,
+        "opportunity_score": 0.0987,
+        "reserve_dollars": 164.92,
         "strategy": "dip_uptrend",
         "symbol": "VTI",
-        "total_dollars": 1150.72
+        "total_dollars": 1164.92
       },
       {
         "base_dollars": 1000.0,
-        "final_weight": 0.32687943262411345,
+        "final_weight": 0.3308056737588652,
         "name": "Vanguard S&P 500 ETF",
-        "opportunity_score": 0.06,
-        "reserve_dollars": 152.25,
+        "opportunity_score": 0.0994,
+        "reserve_dollars": 166.09,
         "strategy": "dip_uptrend",
         "symbol": "VOO",
-        "total_dollars": 1152.25
+        "total_dollars": 1166.09
       }
     ],
     "mean_reversion": [
       {
         "base_dollars": 1000.0,
-        "final_weight": 0.3389498281786942,
+        "final_weight": 0.327013058419244,
         "name": "Vanguard Information Technology ETF",
-        "opportunity_score": 0.22,
-        "reserve_dollars": 232.93,
+        "opportunity_score": 0.247,
+        "reserve_dollars": 189.51,
         "strategy": "mean_reversion",
         "symbol": "VGT",
-        "total_dollars": 1232.93
+        "total_dollars": 1189.51
       },
       {
         "base_dollars": 1000.0,
-        "final_weight": 0.3292865979381443,
+        "final_weight": 0.33561786941580757,
         "name": "Vanguard Total Stock Market ETF",
-        "opportunity_score": 0.1868,
-        "reserve_dollars": 197.78,
+        "opportunity_score": 0.2878,
+        "reserve_dollars": 220.81,
         "strategy": "mean_reversion",
         "symbol": "VTI",
-        "total_dollars": 1197.78
+        "total_dollars": 1220.81
       },
       {
         "base_dollars": 1000.0,
-        "final_weight": 0.33176082474226803,
+        "final_weight": 0.3373690721649485,
         "name": "Vanguard S&P 500 ETF",
-        "opportunity_score": 0.1953,
-        "reserve_dollars": 206.78,
+        "opportunity_score": 0.2961,
+        "reserve_dollars": 227.18,
         "strategy": "mean_reversion",
         "symbol": "VOO",
-        "total_dollars": 1206.78
+        "total_dollars": 1227.18
       }
     ],
     "momentum": [
@@ -266,9 +269,9 @@
     ]
   },
   "volatility": {
-    "average_20d": 20.40649995803833,
-    "latest_close": 24.559999465942383,
-    "latest_date": "2026-11-18",
+    "average_20d": 20.876999950408937,
+    "latest_close": 28.440000534057617,
+    "latest_date": "2026-11-19",
     "regime": "elevated",
     "symbol": "^VIX"
   }
